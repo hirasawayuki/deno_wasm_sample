@@ -12,16 +12,18 @@ const isValid = (result: number[], p: number, v: number): boolean => {
 
   let block_y = Math.floor( y / 3);
   let block_x = Math.floor( x / 3);
-  for (let j = 0; j < 3; j++) {
-    if (result[9 * (3 * block_y + j) + (3 * block_x + j)] === v) {
-      return false;
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      if (result[9 * (3 * block_y + i) + (3 * block_x + j)] === v) {
+        return false;
+      }
     }
   }
 
   return true;
 }
 
-export function solve(problem: number[]) {
+export function solveJs(problem: number[]) {
   let result: number[] = new Array(N);
   result.fill(0);
 
@@ -36,6 +38,7 @@ export function solve(problem: number[]) {
 
   let is_failing = false;
   while (stack.length > 0) {
+    n++;
     let t: [boolean, number, number] = stack.pop() as [boolean, number, number];
     let is_back: boolean = t[0]
     let p = t[1];
@@ -64,7 +67,6 @@ export function solve(problem: number[]) {
     let is_updated = false;
 
     for (let i = p + 1; i < N; i++) {
-      n++;
       if (result[i] === 0) {
         stack.push([false, i, 1]);
         is_updated = true;
@@ -83,7 +85,7 @@ export function solve(problem: number[]) {
 
 export function displayNumberPlace(np: number[]) {
   for (let i = 0; i < 9; i++) {
-    console.log(np.slice(i, i + 9).join('|'));
+    console.log(np.slice(i * 9, i * 9 + 9).join('|'));
   }
 }
 
