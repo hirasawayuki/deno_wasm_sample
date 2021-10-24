@@ -1,8 +1,5 @@
+extern crate wasm_bindgen;
 use wasm_bindgen::prelude::*;
-
-#[cfg(feature = "wee_alloc")]
-#[global_allocator]
-static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
 const N: usize = 81;
 
@@ -24,6 +21,15 @@ fn is_valid(result: [u8; N], p: usize, v: u8) -> bool {
         }
     }
     return true;
+}
+
+#[wasm_bindgen]
+pub fn fibo(n: i32) -> i32 {
+    match n {
+        0 => 0,
+        1 => 1,
+        _ => fibo(n-2) + fibo(n-1),
+    }
 }
 
 #[wasm_bindgen]
