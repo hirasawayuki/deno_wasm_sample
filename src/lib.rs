@@ -25,11 +25,11 @@ fn is_valid(result: [u8; N], p: usize, v: u8) -> bool {
 
 #[wasm_bindgen]
 pub fn fibo(n: i32) -> i32 {
-    match n {
-        0 => 0,
-        1 => 1,
-        _ => fibo(n-2) + fibo(n-1),
+    if n <= 1 {
+        return n;
     }
+
+    return fibo(n-2) + fibo(n-1);
 }
 
 #[wasm_bindgen]
