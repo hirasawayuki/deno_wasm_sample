@@ -1,7 +1,7 @@
 const N = 81;
 let n= 0;
 
-const isValid = (result: number[], p: number, v: number): boolean => {
+const isValid = (result: Uint8Array, p: number, v: number): boolean => {
   let y = Math.floor(p/9);
   let x = p % 9;
   for (let i = 0; i < 9; i++) {
@@ -23,8 +23,8 @@ const isValid = (result: number[], p: number, v: number): boolean => {
   return true;
 }
 
-export function solveJs(problem: number[]) {
-  let result: number[] = new Array(N);
+export function solveJs(problem: Uint8Array) {
+  let result: Uint8Array = new Uint8Array(N);
   result.fill(0);
 
   let stack: [boolean, number, number][] = [];
@@ -83,7 +83,7 @@ export function solveJs(problem: number[]) {
   return result;
 }
 
-export function displayNumberPlace(np: number[]) {
+export function displayNumberPlace(np: Uint8Array) {
   for (let i = 0; i < 9; i++) {
     console.log(np.slice(i * 9, i * 9 + 9).join('|'));
   }
