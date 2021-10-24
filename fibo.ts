@@ -8,12 +8,14 @@ const fiboJs = (n: number): number => {
   return fiboJs(n-1) + fiboJs(n-2)
 }
 
+console.log("============== deno ============")
 const startTime = Date.now();
 let result = fiboJs(40);
 const endTime = Date.now();
 console.log(result);
 console.log(`solve time: ${endTime - startTime}[ms]`);
 
+console.log("============== wasm ============")
 const startTimeWasm = Date.now();
 let resultWasm = fibo(40);
 const endTimeWasm = Date.now();
