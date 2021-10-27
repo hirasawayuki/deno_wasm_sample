@@ -23,7 +23,7 @@ const isValid = (result: Uint8Array, p: number, v: number): boolean => {
   return true;
 }
 
-export function solveJs(problem: Uint8Array) {
+export function numberPlace(problem: Uint8Array) {
   let result: Uint8Array = new Uint8Array(N);
   result.fill(0);
 

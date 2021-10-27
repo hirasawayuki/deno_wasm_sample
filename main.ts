@@ -1,5 +1,5 @@
-import {PROBLEM_SET, solveJs, displayNumberPlace} from "./deps.ts";
-import { solve } from "./pkg/number_place.js";
+import {PROBLEM_SET, numberPlace, displayNumberPlace} from "./deps.ts";
+import { number_place } from "./pkg/number_place.js";
 
 for (let p in PROBLEM_SET) {
   let problem: Uint8Array = PROBLEM_SET[p];
@@ -7,7 +7,7 @@ for (let p in PROBLEM_SET) {
   displayNumberPlace(problem);
   console.log("============== deno ============")
   const startTime = Date.now();
-  let result = solveJs(problem);
+  let result = numberPlace(problem);
   const endTime = Date.now();
 
   displayNumberPlace(result);
@@ -15,7 +15,7 @@ for (let p in PROBLEM_SET) {
 
   console.log("============== wasm ============")
   const startTimeWasm = Date.now();
-  let resultWasm = solve(problem);
+  let resultWasm = number_place(problem);
   const endTimeWasm = Date.now();
   displayNumberPlace(resultWasm);
   console.log(`solve time: ${endTimeWasm - startTimeWasm}[ms]`);

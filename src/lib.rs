@@ -29,15 +29,15 @@ pub fn fibo(n: i32) -> i32 {
         return n;
     }
 
-    return fibo(n-2) + fibo(n-1);
+    return fibo(n-1) + fibo(n-2);
 }
 
 #[wasm_bindgen]
-pub fn solve(problem: Vec<u8>) -> Vec<u8> {
-    solve_innner(problem)
+pub fn number_place(problem: Vec<u8>) -> Vec<u8> {
+    solve(problem)
 }
 
-fn solve_innner(problem: Vec<u8>) -> Vec<u8> {
+fn solve(problem: Vec<u8>) -> Vec<u8> {
     let mut result = [0; N];
 
     let mut stack = vec![];
